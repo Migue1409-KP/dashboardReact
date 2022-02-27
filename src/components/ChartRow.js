@@ -14,7 +14,6 @@ function ChartRow(props){
                             )}
                         </ul>
                     </td>
-                    <td>{props.Awards}</td>
                 </tr>
             )
     }

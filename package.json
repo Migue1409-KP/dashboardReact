@@ -12,13 +12,9 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.13"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev": "node src/app.js nodemon",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

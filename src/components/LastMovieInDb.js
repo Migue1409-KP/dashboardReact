@@ -1,7 +1,20 @@
 import React from 'react';
-import imagenFondo from '../assets/images/mandalorian.jpg';
+import {useState, useEffect} from 'react'
 
 function LastMovieInDb(){
+    const [lastProduct, setLastProduct] = useState([])
+    useEffect(() => {
+        fetch("https://trueque-online.herokuapp.com/products/api")
+            .then(result => result.json())
+            .then(data => {
+                data.products[(data.products.length-1)].images = data.products[(data.products.length-1)].images[0].path
+                setLastProduct(data.products[(data.products.length-1)])
+            })
+            .catch(err => console.log(err))
+    }, [])
+
+
+
     return(
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
@@ -10,10 +23,11 @@ function LastMovieInDb(){
                 </div>
                 <div className="card-body">
                     <div className="text-center">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={imagenFondo} alt=" Star Wars - Mandalorian "/>
+                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{maxHeight: 50 +'vh'}} src={"https://trueque-online.herokuapp.com/img/imgProducts/" + lastProduct.images} alt={"https://trueque-online.herokuapp.com/img/imgProducts/" + lastProduct.productName}/>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa citationem ratione aperiam voluptatum non corporis ratione aperiam voluptatum quae dolorem culpa ratione aperiam voluptatum?</p>
-                    <a className="btn btn-danger" target="_blank" rel="nofollow" href="/">View movie detail</a>
+                    <h2>{lastProduct.productName}</h2>
+                    <p>{lastProduct.productDescriptionUpload}</p>
+                    <a className="btn btn-danger" target="_blank" rel="nofollow" href={"https://trueque-online.herokuapp.com/products/"+lastProduct.id}>View movie detail</a>
                 </div>
             </div>
         </div>

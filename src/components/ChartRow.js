@@ -2,22 +2,16 @@ import React from 'react';
 
 
 function ChartRow(props){
-    return (
-                <tr>
-                    <td>{props.Title}</td>
-                    <td>{props.Length}</td>
-                    <td>{props.Rating}</td>
-                    <td>
-                        <ul>
-                            {props.Categories.map( (category,i) => 
-                                <li key={`category ${i}`}>{category}</li>
-                            )}
-                        </ul>
-                    </td>
-                </tr>
-            )
+    console.log(props)
+    if(props.type == "user"){
+        return (
+            <tr>
+                <td>{props.name + " " + props.lastName}</td>
+                <td>{props.email}</td>
+                <td><a href={props.detail} target="_blank">{props.detail}</a></td>
+            </tr>
+        )
     }
-    
-        
+}
 
 export default ChartRow;

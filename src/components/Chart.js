@@ -1,62 +1,58 @@
-import React from 'react';
-import ChartRow from './ChartRow';
+import React from "react";
+import ChartRow from "./ChartRow";
+import { useState, useEffect } from "react";
 
-let tableRowsData = [
-    {
-        Title: 'Billy Elliot ',
-        Length: '123',
-        Rating: '5',
-        Categories: ['Drama','Comedia'],
-        Awards: 2
-    },
-    {
-        Title: 'Alicia en el país de las maravillas',
-        Length: '142',
-        Rating: '4.8',
-        Categories: ['Drama','Acción','Comedia'],
-        Awards: 3
-    },
-    
-]
-
-
-function Chart (){
-    return (
-        /* <!-- DataTales Example --> */
-        <div className="card shadow mb-4">
-            <div className="card-body">
-                <div className="table-responsive">
-                    <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Categoria</th>
-                                <th>Link</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Categoria</th>
-                                <th>Link</th>
-                                <th>Precio</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            {
-                            tableRowsData.map( ( row , i) => {
-                                return <ChartRow { ...row} key={i}/>
-                            })
-                            }
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+function Chart(props) {
+  const [data, setData] = useState([]);
+  let campo1 = props.name == "user" ? "Email" : "Categoria";
+  let campo2 = props.name == "user" ? "" : "<th>Precio</th>";
+  useEffect(() => {
+    if (props.name == "user") {
+      fetch("https://trueque-online.herokuapp.com/users/api")
+        .then((result) => result.json())
+        .then((data) => {
+          setData(data.users);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
+  return (
+    /* <!-- DataTales Example --> */
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <div className="table-responsive">
+          <table
+            className="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellSpacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>{campo1}</th>
+                <th>Link</th>
+                {campo2}
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Nombre</th>
+                <th>{campo1}</th>
+                <th>Link</th>
+                {campo2}
+              </tr>
+            </tfoot>
+            <tbody>
+              {data.map(row => {
+                return <ChartRow {...row} type={props.name} />;
+              })}
+            </tbody>
+          </table>
         </div>
-
-    )
+      </div>
+    </div>
+  );
 }
 
 export default Chart;

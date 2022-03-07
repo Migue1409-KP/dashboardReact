@@ -3,6 +3,7 @@ import image from '../assets/images/logoTO.png';
 import ContentWrapper from './ContentWrapper';
 import GenresInDb from './GenresInDb';
 import LastMovieInDb from './LastMovieInDb';
+import LastUser from './lastUser';
 import ContentRowMovies from './ContentRowMovies';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
@@ -27,7 +28,7 @@ function SideBar(){
                 <li className="nav-item active">
                     <Link className="nav-link" to="/">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard - DH movies</span></Link>
+                        <span>Dashboard - TruequeOnline</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
@@ -46,9 +47,15 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Charts -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/Ultimos">
+                    <Link className="nav-link" to="/UltimoProducto">
                         <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Ultimos</span></Link>
+                        <span>Último producto</span></Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link className="nav-link" to="/UltimoUsuario">
+                        <i className="fas fa-fw fa-user"></i>
+                        <span>Último usuario</span></Link>
                 </li>
 
                 {/*<!-- Nav Item - Tables -->*/}
@@ -86,8 +93,11 @@ function SideBar(){
                 <Route path="/Categorias">
                     <GenresInDb />
                 </Route>
-                <Route path="/Ultimos">
+                <Route path="/UltimoProducto">
                     <LastMovieInDb />
+                </Route>
+                <Route path="/UltimoUsuario">
+                    <LastUser />
                 </Route>
                 <Route path="/Totales">
                     <ContentRowMovies />

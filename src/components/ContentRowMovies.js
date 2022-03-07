@@ -5,22 +5,6 @@ import SmallCard from './SmallCard';
 
 /* <!-- Products in DB --> */
 
-let productsInDB = {
-    title: 'Productos en base de datos',
-    color: 'primary', 
-    cuantity: 21,
-    icon: 'fa-clipboard-list'
-}
-
-/* <!-- Total awards --> */
-
-let totalCategories = {
-    title:'Numero de categorías', 
-    color:'success', 
-    cuantity: 14,
-    icon:'fa-award'
-}
-
 
 function ContentRowMovies(){
     
@@ -33,7 +17,6 @@ function ContentRowMovies(){
         try {
             const res = await fetch("https://trueque-online.herokuapp.com/products/api")
             const result = await res.json()
-            console.log(result)
             return result
         } catch (error) {
             console.error("Caution, there is an error")

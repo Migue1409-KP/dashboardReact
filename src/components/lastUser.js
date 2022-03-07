@@ -7,7 +7,7 @@ function LastUser(){
         fetch("https://trueque-online.herokuapp.com/users/api")
             .then(result => result.json())
             .then(data => {
-                setLastUser(data.users[1])
+                setLastUser(data.users[data.count-1])
             })
             .catch(err => console.log(err))
     }, [])

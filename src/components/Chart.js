@@ -14,6 +14,13 @@ function Chart(props) {
           setData(data.users);
         })
         .catch((err) => console.log(err));
+    }else{
+      fetch("https://trueque-online.herokuapp.com/products/api")
+      .then((result) => result.json())
+      .then((data) => {
+        setData(data.products);
+      })
+      .catch((err) => console.log(err));
     }
   }, []);
   return (

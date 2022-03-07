@@ -17,6 +17,7 @@ function ContentRowCenter(){
             <GenresInDb />
 
             <Chart name = "user"/>
+            <Chart name = "products"/>
 
         </div>
     )

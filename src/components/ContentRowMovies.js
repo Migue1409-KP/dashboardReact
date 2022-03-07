@@ -21,12 +21,13 @@ let totalCategories = {
     icon:'fa-award'
 }
 
-let cartProps = [productsInDB, totalCategories];
 
 function ContentRowMovies(){
     
     let [productsInDB, setProductsInDB]= useState([])
     let [totalCategories, setCategoriesInDB]= useState([])
+    let [totalUsers, setUsersInDB]= useState([])
+
     let [cartProps, setCartProps] = useState([])
     const callApiProducts = async()=>{
         try {
@@ -38,10 +39,20 @@ function ContentRowMovies(){
             console.error("Caution, there is an error")
         }
     }
+    const callApiUsers = async()=>{
+        try {
+            const res = await fetch("https://trueque-online.herokuapp.com/users/api")
+            const result = await res.json()
+            console.log(result)
+            return result
+        } catch (error) {
+            console.error("Caution, there is an error")
+        }
+    }
 
     useEffect(async()=>{
         const products = await callApiProducts()
-        
+        const users = await callApiUsers()
         setProductsInDB(productsInDB = {
             title: 'Productos en base de datos',
             color: 'primary', 
@@ -54,9 +65,15 @@ function ContentRowMovies(){
             cuantity: Object.keys(products.categories).length,
             icon:'fa-award'
         })
-        console.log(Object.keys(products.categories).length)
+        setUsersInDB(totalUsers = {
+            title:'Numero de usuarios', 
+            color:'secondary', 
+            cuantity: users.count,
+            icon:'fa-database'
+        })
 
-        setCartProps(cartProps = [productsInDB, totalCategories])
+
+        setCartProps(cartProps = [productsInDB, totalCategories, totalUsers])
         
     },[])
     

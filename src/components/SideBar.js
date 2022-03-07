@@ -3,6 +3,7 @@ import image from '../assets/images/logoTO.png';
 import ContentWrapper from './ContentWrapper';
 import GenresInDb from './GenresInDb';
 import LastMovieInDb from './LastMovieInDb';
+import LastUser from './lastUser';
 import ContentRowMovies from './ContentRowMovies';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
@@ -38,24 +39,30 @@ function SideBar(){
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
-                <Link className="nav-link" to="/GenresInDb">
+                <Link className="nav-link" to="/Categorias">
                         <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
+                        <span>Categorias</span>
                     </Link>
                 </li>
 
                 {/*<!-- Nav Item - Charts -->*/}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/LastMovieInDb">
+                    <Link className="nav-link" to="/UltimoProducto">
                         <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></Link>
+                        <span>Último producto</span></Link>
+                </li>
+
+                <li className="nav-item">
+                    <Link className="nav-link" to="/UltimoUsuario">
+                        <i className="fas fa-fw fa-user"></i>
+                        <span>Último usuario</span></Link>
                 </li>
 
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item nav-link">
-                <Link className="nav-link" to="/ContentRowMovies">
+                <Link className="nav-link" to="/Totales">
                         <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></Link>
+                        <span>Totales</span></Link>
                 </li>
 
                 {/*<!-- Divider -->*/}
@@ -83,13 +90,16 @@ function SideBar(){
                 <Route exact path="/">
                     <ContentWrapper />
                 </Route>
-                <Route path="/GenresInDb">
+                <Route path="/Categorias">
                     <GenresInDb />
                 </Route>
-                <Route path="/LastMovieInDb">
+                <Route path="/UltimoProducto">
                     <LastMovieInDb />
                 </Route>
-                <Route path="/ContentRowMovies">
+                <Route path="/UltimoUsuario">
+                    <LastUser />
+                </Route>
+                <Route path="/Totales">
                     <ContentRowMovies />
                 </Route>
                 <Route component={NotFound} />

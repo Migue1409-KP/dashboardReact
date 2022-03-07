@@ -1,26 +1,28 @@
 import React from "react";
-import ChartRow from "./ChartRow";
 import { useState, useEffect } from "react";
+import TableContent from "./TableContent";
 
 function Chart(props) {
-  const [data, setData] = useState([]);
-  let campo1 = props.name == "user" ? "Email" : "Categoria";
-  let campo2 = props.name == "user" ? "" : "<th>Precio</th>";
+  const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const campo1 = props.name == "users" ? "Email" : "Categoria";
+  const campo2 = props.name == "users" ? "" : <th>Precio</th>;
+
   useEffect(() => {
-    if (props.name == "user") {
+    if (props.name == "users") {
       fetch("https://trueque-online.herokuapp.com/users/api")
         .then((result) => result.json())
         .then((data) => {
-          setData(data.users);
+          setUsers(data.users);
         })
         .catch((err) => console.log(err));
-    }else{
+    } else {
       fetch("https://trueque-online.herokuapp.com/products/api")
-      .then((result) => result.json())
-      .then((data) => {
-        setData(data.products);
-      })
-      .catch((err) => console.log(err));
+        .then((result) => result.json())
+        .then((data) => {
+          setProducts(data.products);
+        })
+        .catch((err) => console.log(err));
     }
   }, []);
   return (
@@ -50,11 +52,7 @@ function Chart(props) {
                 {campo2}
               </tr>
             </tfoot>
-            <tbody>
-              {data.map(row => {
-                return <ChartRow {...row} type={props.name} />;
-              })}
-            </tbody>
+            <TableContent name={props.name} users={users} products={products}/>
           </table>
         </div>
       </div>

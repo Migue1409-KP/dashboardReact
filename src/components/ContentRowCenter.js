@@ -2,7 +2,6 @@ import React from 'react';
 import LastMovieInDb from './LastMovieInDb';
 import GenresInDb from './GenresInDb';
 import LastUser from './lastUser';
-import Chart from './Chart';
 
 function ContentRowCenter(){
     return (
@@ -15,9 +14,6 @@ function ContentRowCenter(){
 
             {/*<!-- Genres in DB -->*/}
             <GenresInDb />
-
-            <Chart name = "user"/>
-            <Chart name = "products"/>
 
         </div>
     )

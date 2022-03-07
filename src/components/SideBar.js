@@ -4,9 +4,10 @@ import ContentWrapper from './ContentWrapper';
 import GenresInDb from './GenresInDb';
 import LastMovieInDb from './LastMovieInDb';
 import LastUser from './lastUser';
-import ContentRowMovies from './ContentRowMovies';
+import Totals from './Totals';
 import NotFound from './NotFound';
 import {Link, Route, Switch} from 'react-router-dom';
+
 
 function SideBar(){
     return(
@@ -35,7 +36,7 @@ function SideBar(){
                 <hr className="sidebar-divider"/>
 
                 {/*<!-- Heading -->*/}
-                <div className="sidebar-heading">Actions</div>
+                <div className="sidebar-heading">Acciones</div>
 
                 {/*<!-- Nav Item - Pages -->*/}
                 <li className="nav-item">
@@ -45,19 +46,6 @@ function SideBar(){
                     </Link>
                 </li>
 
-                {/*<!-- Nav Item - Charts -->*/}
-                <li className="nav-item">
-                    <Link className="nav-link" to="/UltimoProducto">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Último producto</span></Link>
-                </li>
-
-                <li className="nav-item">
-                    <Link className="nav-link" to="/UltimoUsuario">
-                        <i className="fas fa-fw fa-user"></i>
-                        <span>Último usuario</span></Link>
-                </li>
-
                 {/*<!-- Nav Item - Tables -->*/}
                 <li className="nav-item nav-link">
                 <Link className="nav-link" to="/Totales">
@@ -65,25 +53,20 @@ function SideBar(){
                         <span>Totales</span></Link>
                 </li>
 
+                {/* <li className="nav-item nav-link">
+                <Link className="nav-link" to="/TotalesUsers">
+                        <span>- Listado Usuario</span></Link>
+                </li>
+                
+                <li className="nav-item nav-link">
+                <Link className="nav-link" to="/TotalesProducts">
+                        <span>- Listado Productos</span></Link>
+                </li> */}
+
+
                 {/*<!-- Divider -->*/}
                 <hr className="sidebar-divider d-none d-md-block"/>
             </ul>
-            {/*<!-- End of Sidebar -->*/}
-
-            {/*<!-- Microdesafio 1 -->*/}
-            {/*<!--<Route exact path="/">
-                <ContentWrapper />
-            </Route>
-            <Route path="/GenresInDb">
-                <GenresInDb />
-            </Route>
-            <Route path="/LastMovieInDb">
-                <LastMovieInDb />
-            </Route>
-            <Route path="/ContentRowMovies">
-                <ContentRowMovies />
-            </Route>*/}
-            {/*<!-- End Microdesafio 1 -->*/}
 
             {/*<!-- End Microdesafio 2 -->*/}
             <Switch>
@@ -100,8 +83,14 @@ function SideBar(){
                     <LastUser />
                 </Route>
                 <Route path="/Totales">
-                    <ContentRowMovies />
+                    <Totals />
                 </Route>
+                {/* <Route path="/TotalesUsers">
+                    <Totals name = "users"/>
+                </Route>
+                <Route path="/TotalesProducts">
+                    <Totals name = "products"/>
+                </Route> */}
                 <Route component={NotFound} />
             </Switch>
             {/*<!-- End Microdesafio 2 -->*/}

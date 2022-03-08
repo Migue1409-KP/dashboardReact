@@ -74,7 +74,7 @@ function SideBar(){
                     <ContentWrapper />
                 </Route>
                 <Route path="/Categorias">
-                    <GenresInDb />
+                    <GenresInDb lg = "10"/>
                 </Route>
                 <Route path="/UltimoProducto">
                     <LastMovieInDb />

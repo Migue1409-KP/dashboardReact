@@ -26,7 +26,7 @@ function LastUser(){
                     </div>
                     <h2>{lastUser.name + " " + lastUser.lastName}</h2>
                     <p>{lastUser.email}</p>
-                    <a className="btn btn-danger" target="_blank" rel="nofollow" href={lastUser.detail}>View movie detail</a>
+                    <a className="btn btn-danger" target="_blank" rel="nofollow" href={lastUser.detail}>Ver detalle</a>
                 </div>
             </div>
         </div>

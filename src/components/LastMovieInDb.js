@@ -27,7 +27,7 @@ function LastMovieInDb(){
                     </div>
                     <h2>{lastProduct.productName}</h2>
                     <p>{lastProduct.productDescriptionUpload}</p>
-                    <a className="btn btn-danger" target="_blank" rel="nofollow" href={"https://trueque-online.herokuapp.com/products/"+lastProduct.id}>View movie detail</a>
+                    <a className="btn btn-danger" target="_blank" rel="nofollow" href={"https://trueque-online.herokuapp.com/products/"+lastProduct.id}>Ver detalle</a>
                 </div>
             </div>
         </div>

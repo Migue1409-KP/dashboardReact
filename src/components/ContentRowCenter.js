@@ -13,7 +13,7 @@ function ContentRowCenter(){
             {/*<!-- End content row last movie in Data Base -->*/}
 
             {/*<!-- Genres in DB -->*/}
-            <GenresInDb />
+            <GenresInDb lg = "12"/>
 
         </div>
     )
